@@ -38,6 +38,14 @@ export const getUserResever = async (req, res) => {
     res.status(500).send({ success: false, message: '伺服器錯誤' })
   }
 }
+export const getMyResever = async (req, res) => {
+  try {
+    const result = await resevers.find({ user: req.user._id })
+    res.status(200).send({ success: true, message: '', result })
+  } catch (error) {
+    res.status(500).send({ success: false, message: '伺服器錯誤' })
+  }
+}
 
 export const getAllResevers = async (req, res) => {
   try {

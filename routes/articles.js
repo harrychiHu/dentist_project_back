@@ -9,7 +9,9 @@ import {
   getAllArticles,
   getArticle,
   editArticle,
-  deleteArticle
+  deleteArticle,
+  getUserAllArticles,
+  getOneArticles
 } from '../controllers/articles.js'
 
 const router = express.Router()
@@ -17,7 +19,8 @@ const router = express.Router()
 router.post('/', content('multipart/form-data'), auth.jwt, admin, upload, createArticle)
 router.get('/', getArticles)
 router.get('/all', auth.jwt, admin, getAllArticles)
-router.get('/allHome', getAllArticles)
+router.get('/allHome/', getUserAllArticles)
+router.get('/catch/:id', getOneArticles)
 router.get('/:id', getArticle)
 router.patch('/:id', content('multipart/form-data'), auth.jwt, admin, upload, editArticle)
 router.delete('/:id', auth.jwt, admin, deleteArticle)
