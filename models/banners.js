@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 
 const bannersSchema = new mongoose.Schema({
-  bannerTitle: {
+  title: {
     type: String,
     required: [true, '缺少標題欄位']
   },
-  bannerPic: {
+  image: {
     type: String,
     required: [true, '缺少圖片欄位']
   }

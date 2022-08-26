@@ -3,8 +3,8 @@ import banners from '../models/banners.js'
 export const createBanner = async (req, res) => {
   try {
     const result = await banners.create({
-      bannerTitle: req.body.bannerTitle,
-      bannerPic: req.files.bannerPic?.[0]?.path || ''
+      title: req.body.title,
+      image: req.file?.path || ''
     })
     res.status(200).send({ success: true, message: '', result })
   } catch (error) {
@@ -57,9 +57,9 @@ export const deleteBanner = async (req, res) => {
 export const editBanner = async (req, res) => {
   try {
     const data = {
-      bannerTitle: req.body.bannerTitle
+      title: req.body.title
     }
-    if (req.file) data.image = req.files.bannerPic?.[0]?.path
+    if (req.file) data.image = req.file.path
     const result = await banners.findByIdAndUpdate(req.params.id, data, { new: true })
 
     res.status(200).send({ success: true, message: '', result })

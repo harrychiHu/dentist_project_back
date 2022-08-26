@@ -1,33 +1,33 @@
 import mongoose from 'mongoose'
 
 const articlesSchema = new mongoose.Schema({
-  articleDate: {
+  date: {
     type: Date,
     default: Date.now()
   },
-  articleTitle: {
+  title: {
     type: String,
     required: [true, '缺少標題欄位']
   },
-  articlePic: {
+  image: {
     type: String,
     required: [true, '缺少圖片欄位']
   },
-  articleDescription: {
+  description: {
     type: String,
     required: [true, '缺少描述欄位']
   },
-  articleEditor: {
+  editor: {
     type: String,
     required: [true, '缺少內容']
   },
-  articleCategory: {
+  category: {
     type: String,
     enum: {
-      values: ['齒顎矯正', '人工植牙', '美容牙科', '家庭牙科']
+      values: ['口腔保健', '牙齒矯正', '牙齒美容', '食譜保健']
     }
   },
-  articleShow: {
+  online: {
     type: Boolean,
     default: false
   }

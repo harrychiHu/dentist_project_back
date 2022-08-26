@@ -1,19 +1,19 @@
 import mongoose from 'mongoose'
 
 const doctorsSchema = new mongoose.Schema({
-  doctorName: {
+  name: {
     type: String,
     required: [true, '缺少名稱欄位']
   },
-  doctorPic: {
+  image: {
     type: String,
     required: [true, '缺少圖片欄位']
   },
-  doctorDescription: {
+  description: {
     type: String,
     required: [true, '缺少描述欄位']
   },
-  doctorShow: {
+  online: {
     type: Boolean,
     default: false
   }

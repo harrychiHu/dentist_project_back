@@ -3,10 +3,10 @@ import doctors from '../models/doctors.js'
 export const createDoctor = async (req, res) => {
   try {
     const result = await doctors.create({
-      doctorName: req.body.doctorName,
-      doctorPic: req.files.doctorPic?.[0]?.path || '',
-      doctorDescription: req.body.doctorDescription,
-      doctorShow: req.body.doctorShow
+      name: req.body.name,
+      image: req.file?.path || '',
+      description: req.body.description,
+      online: req.body.online
     })
 
     res.status(200).send({ success: true, message: '', result })
@@ -23,7 +23,7 @@ export const createDoctor = async (req, res) => {
 
 export const getDoctors = async (req, res) => {
   try {
-    const result = await doctors.find({ doctorShow: true })
+    const result = await doctors.find({ online: true })
     res.status(200).send({ success: true, message: '', result })
   } catch (error) {
     res.status(500).send({ success: false, message: '伺服器錯誤' })
@@ -60,11 +60,11 @@ export const deleteDoctor = async (req, res) => {
 export const editDoctor = async (req, res) => {
   try {
     const data = {
-      doctorName: req.body.doctorName,
-      doctorDescription: req.body.doctorDescription,
-      doctorShow: req.body.doctorShow
+      name: req.body.name,
+      description: req.body.description,
+      online: req.body.online
     }
-    if (req.file) data.image = req.files.doctorPic?.[0]?.path
+    if (req.file) data.image = req.file.path
     const result = await doctors.findByIdAndUpdate(req.params.id, data, { new: true })
 
     res.status(200).send({ success: true, message: '', result })
