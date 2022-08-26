@@ -40,7 +40,6 @@ app.use('/banners', bannerRouter)
 app.use('/resevers', reseverRouter)
 
 app.all('*', (req, res) => {
-  console.log(req)
   res.status(404).send({ success: false, message: '找不到' })
 })
 
