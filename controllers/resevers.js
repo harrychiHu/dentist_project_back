@@ -4,10 +4,10 @@ export const createResever = async (req, res) => {
   try {
     const result = await resevers.create({
       user: req.user._id,
-      reseverDescription: req.body.reseverDescription,
-      reseverShow: req.body.reseverShow,
-      reseverDate: req.body.reseverDate,
-      reseverCategory: req.body.reseverCategory
+      description: req.body.description,
+      situation: req.body.situation,
+      date: req.body.date,
+      category: req.body.category
     })
     res.status(200).send({ success: true, message: '', result })
   } catch (error) {
@@ -77,10 +77,10 @@ export const deleteResever = async (req, res) => {
 export const editResever = async (req, res) => {
   try {
     const data = {
-      reseverDescription: req.body.reseverDescription,
-      reseverShow: req.body.reseverShow,
-      reseverDate: req.body.reseverDate,
-      reseverCategory: req.body.reseverCategory
+      description: req.body.description,
+      situation: req.body.situation,
+      date: req.body.date,
+      category: req.body.category
     }
     const result = await resevers.findByIdAndUpdate(req.params.id, data, { new: true })
 

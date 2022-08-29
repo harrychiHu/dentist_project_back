@@ -6,20 +6,20 @@ const reseversSchema = new mongoose.Schema({
     ref: 'users',
     required: [true, '使用者必填']
   },
-  reseverDate: {
+  Date: {
     type: Date,
     default: Date.now()
   },
-  reseverDescription: {
+  description: {
     type: String
   },
-  reseverCategory: {
+  category: {
     type: String,
     enum: {
       values: ['齒顎矯正', '人工植牙', '美容牙科', '家庭牙科']
     }
   },
-  reseverShow: {
+  situation: {
     type: String,
     enum: {
       values: ['成功', '失敗', '等待']
