@@ -6,7 +6,7 @@ const reseversSchema = new mongoose.Schema({
     ref: 'users',
     required: [true, '使用者必填']
   },
-  Date: {
+  date: {
     type: Date,
     default: Date.now()
   },
